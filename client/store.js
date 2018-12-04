@@ -7,9 +7,15 @@ import { defaultShuttleRects } from './utils/utils'
 const defaultState = {
     shuttle: {
         position: 0,
-        rects: defaultShuttleRects
+        rects: defaultShuttleRects,
+        health: 100,
     },
-    threats: []
+    threats: [],
+    game: {
+        started: false,
+        ended: false,
+        won: false,
+    }
 }
 
 export default createStore(rootReducer, defaultState)

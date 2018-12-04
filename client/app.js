@@ -13,7 +13,8 @@ import styled, { createGlobalStyle } from 'styled-components'
 function mapStateToProps(state) {
     return {
         shuttle: state.shuttle,
-        threats: state.threats
+        threats: state.threats,
+        game: state.game
     }
 }
 
@@ -23,11 +24,15 @@ function mapDispatchToProps(dispatch){
 
 
 const GlobalStyle = createGlobalStyle`
+    @import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
     html{
-        line-height: 2,
+        line-height: 2;
     }
     body{
         margin: 0;
+    }
+    * {
+        font-family: 'Press Start 2P';
     }
 `
 

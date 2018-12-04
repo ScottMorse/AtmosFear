@@ -37,6 +37,17 @@ export default function shuttle(state = {position: 0,rects: defaultShuttleRects}
                 position: newPos,
                 rects: newRects
             }
+        case 'HIT_SHUTTLE':
+            switch(action.threatType){
+                case 'ASTEROID':
+                    const health = state.health - 10
+                    return {
+                        ...state,
+                        health
+                    }
+                default:
+                    return state
+            }
         default:
             return state
     }

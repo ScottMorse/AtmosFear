@@ -8,27 +8,52 @@ const StyledAsteroid = styled.div`
     width: 30px;
     height: 30px;
     border: 10px solid black;
-    transition: transform 0.1s linear;
     z-index: 1;
-    transform: translate(${props => props.xPos}px,${props => props.yPos}px);
+    opacity: 1;
+    transition: transform 0.1s linear;
 `
 
 export default class Asteroid extends Component {
 
-    speed = 10
+    speed = 20
 
     state = {
-        hasHit: false
+        hasHit: false,
+        element: null,
+        active: false
     }
 
-    componentWillMount(){
-        const thisAsteroidState = this.props.threats[this.props.index]
+    componentDidMount(){
+        let thisAsteroidState
+        this.props.threats.forEach(threat => {
+            if(threat.id == this.props.threatId){
+                thisAsteroidState = threat
+            }
+        })
         const asteroidRect = thisAsteroidState.rect
+        
+        const element = document.getElementById('a' + this.props.threatId)
+        this.setState({element: element})
 
-        this.props.fallThreat(this.speed,this.props.index)
+        element.style.cssText = `
+            position: absolute;
+            background-color: maroon;
+            width: 30px;
+            height: 30px;
+            border: 10px solid black;
+            z-index: 1;
+            opacity: 1;
+            transition: transform 0.1s linear;
+            transform: translate(${this.props.xPos}px,${this.props.yPos}px) rotate(0deg)
+        `
+
+        this.props.fallThreat(this.speed,this.props.threatId)
+        let continuing = true
         const fallIntvl = setInterval(()=> {
             if(this.props.yPos >= 700){
                 clearInterval(fallIntvl)
+                this.props.deactivateThreat(this.props.threatId)
+                return
             }
             if(!this.state.hasHit){
                 try{
@@ -45,24 +70,33 @@ export default class Asteroid extends Component {
                                 (asteroidRect.y[1] <= shuttleRect.y[0] && asteroidRect.y[1] >= shuttleRect.y[1])
                             )
                         ){
-                            console.log("boom")
+                            this.props.hitShuttle('ASTEROID')
+                            clearInterval(fallIntvl)
                             this.setState({hasHit: true})
+                            this.disintegrate()
+                            setTimeout(()=>this.props.deactivateThreat(this.props.threatId),500)
+                            continuing = false
                             throw {name: 'Break'}
                         }
                     })
                 }
                 catch(e){if(e.name !== 'Break') throw e }
             }
-            this.props.fallThreat(this.speed,this.props.index)
+            if(continuing) this.props.fallThreat(this.speed,this.props.threatId)
         },100)
     }
 
-    fall = () => {
-        
+    componentDidUpdate(){
+        this.state.element.style.transform = `translate(${this.props.xPos}px,${this.props.yPos}px) rotate(0deg)`
+    }
+
+    disintegrate = () => {
+        this.state.element.style.opacity = 0
+        this.state.element.style.transition = 'transform 0.5s linear, opacity 0.5s ease'
+        this.state.element.style.transform = `translate(${this.props.xPos}px,900px) rotate(1000deg)`
     }
 
     render(){
-        return <StyledAsteroid xPos={this.props.xPos} yPos={this.props.yPos}>
-        </StyledAsteroid>
+        return <div id={"a" + this.props.threatId}></div>
     }
 }
