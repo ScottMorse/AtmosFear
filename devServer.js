@@ -13,7 +13,7 @@ var compiler = webpack(config);
 
 // app.use(require('webpack-hot-middleware')(compiler));
 
-app.get('*', function(req, res) {
+app.get('/', function(req, res) {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
