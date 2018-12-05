@@ -1,4 +1,4 @@
-export default function shuttle(state = {started: false,ended: false,won: false}, action){
+export default function game(state = {started: false,ended: false,won: false}, action){
     switch(action.type){
         case 'START_GAME':
             return {

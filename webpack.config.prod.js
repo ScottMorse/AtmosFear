@@ -41,7 +41,13 @@ module.exports = {
     },
     {
       test: /\.(png|jpg)$/,
+      include: path.join(__dirname, 'client'),
       loader: 'url-loader'
+    },
+    {
+      test: /\.mp3$/,
+      include: path.join(__dirname, 'client'),
+      loader: 'file-loader'
     }
     ]
   }

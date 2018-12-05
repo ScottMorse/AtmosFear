@@ -15,6 +15,10 @@ const defaultState = {
         started: false,
         ended: false,
         won: false,
+    },
+    level: 1,
+    sound: {
+        selected: false
     }
 }
 

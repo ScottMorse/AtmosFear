@@ -40,6 +40,13 @@ export default function threats(state = [], action){
             const rectY = state[index].rect.y
             state[index].rect.y = rectY.map(bound => bound + action.speed)
             return state
+        case 'FALL_THREATS':
+            return state.slice().reduce((threats,threat) => {
+                threat.yPos += 20 //speed
+                threat.rect.y = threat.rect.y.map(bound => bound + 20)
+                threats.push(threat)
+                return threats
+            },[])
         case 'DEACTIVATE_THREAT':
             state.forEach((threat,i) => {
                 if(threat.id == action.id){

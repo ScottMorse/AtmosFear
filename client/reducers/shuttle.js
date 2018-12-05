@@ -48,6 +48,11 @@ export default function shuttle(state = {position: 0,rects: defaultShuttleRects}
                 default:
                     return state
             }
+        case 'REFILL_HEALTH':
+            return {
+                ...state,
+                health: state.health + action.amount
+            }
         default:
             return state
     }
