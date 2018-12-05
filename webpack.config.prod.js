@@ -12,12 +12,24 @@ module.exports = {
     filename: 'bundle.js',
     publicPath: '/static/'
   },
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': "'production'"
+      }
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      compressor: {
+        warnings: false
+      }
+    })
+  ],
   module: {
-    rules: [
+    loaders: [
     // js
     {
       test: /\.js$/,
-      loaders: ['babel-loader'],
+      loaders: ['babel'],
       include: path.join(__dirname, 'client')
     },
     // CSS
