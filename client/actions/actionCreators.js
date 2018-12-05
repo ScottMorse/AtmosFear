@@ -4,17 +4,21 @@ export function startGame(){
     }
 }
 
-export function endGame(status){
+export function gameOver(){
     return {
-        type: 'END_GAME',
-        status
+        type: 'GAME_OVER'
     }
 }
 
-export function winGame(status){
+export function winGame(){
     return {
-        type: 'WIN_GAME',
-        status
+        type: 'GAME_WIN',
+    }
+}
+
+export function levelWin(){
+    return {
+        type: 'LEVEL_WIN'
     }
 }
 
@@ -68,9 +72,9 @@ export function deactivateThreat(id){
     }
 }
 
-export function levelUp(){
+export function clearThreats(){
     return {
-        type: 'LEVEL_UP'
+        type: 'CLEAR_THREATS'
     }
 }
 

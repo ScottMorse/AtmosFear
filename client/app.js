@@ -15,7 +15,6 @@ function mapStateToProps(state) {
         shuttle: state.shuttle,
         threats: state.threats,
         game: state.game,
-        level: state.level,
         sound: state.sound
     }
 }
@@ -36,19 +35,67 @@ const GlobalStyle = createGlobalStyle`
     * {
         font-family: 'Press Start 2P';
     }
+    #stars {
+        background-image: url(${require('./assets/imgs/stars.png')});
+        position: absolute;
+        background-size: 30%;
+        width: inherit;
+        height: inherit;
+        opacity: 0;
+        transition: opacity 2s ease;
+    }
     .asteroid {
         position: absolute;
-        background-color: maroon;
-        width: 30px;
-        height: 30px;
-        border: 10px solid black;
+        width: 50px;
+        height: 50px;
+        background-image: url(${require('./assets/imgs/asteroid.png')});
         z-index: 1;
         opacity: 1;
         transition: transform 0.1s linear;
     }
+    .laser{
+        position: absolute;
+        width: 80px;
+        height: 80px;
+        z-index: 1;
+        opacity: 1;
+        transition: transform 0.1s linear, opacity 0.5s ease;
+        display: flex;
+        justify-content: center;
+        .laser-img{
+            width: inherit;
+            height: inherit;
+            filter: saturate(0);
+            transition: filter 0.95s ease;
+            background-image: url(${require('./assets/imgs/laser.png')});
+        }
+        .beam{
+            opacity: 0;
+            transition: opacity 0.5s ease, width 0.5s ease;
+            width: 5px;
+            height: 700px;
+            background: red;
+            box-shadow: 0 0 10px 2px red;
+            position: absolute;
+            z-index: 10;
+            filter: saturate(1.9);
+            margin-top: 50px;
+        }
+    }
+    .health{
+        position: absolute;
+        background-image: url(${require('./assets/imgs/health.png')});
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        z-index: 1;
+        opacity: 1;
+        transition: transform 0.1s linear;
+        box-shadow: 0 0 10px 5px rgb(0,255,0);
+    }
     #shuttle {
         position: absolute;
-        filter: invert(0) brightness(1) sepia(0);
+        filter: invert(0) brightness(1) sepia(0) hue-rotate(0deg) saturate(1);
         transition: transform .05s linear, filter 0.5s linear;
         display: flex;
         justify-content: center;
@@ -78,13 +125,19 @@ const GlobalStyle = createGlobalStyle`
         color: rgb(0,255,0);
         font-size: 40px;
         opacity: 0;
-        transition: opacity 1s ease;
+        transition: opacity 0.5s ease;
+        h2 {
+            font-size: 20px;
+            margin: -50px 0 50px 0;
+        }
+        user-select: none;
     }
     #game-start{
         opacity: 1;
     }
-    #game-over{
+    #game-over, #level-complete, #game-win{
         display: none;
+        text-align: center; 
     }
     @keyframes flareAnim {
         0% { box-shadow: 0 0 20px 5px yellow }
@@ -92,7 +145,7 @@ const GlobalStyle = createGlobalStyle`
         100% { box-shadow: 0 0 20px 5px yellow }
     }
     @keyframes skyAnimation {
-        100% {background-position-y: -100%}
+        100% {background-position-y: -140%}
     }
 `
 

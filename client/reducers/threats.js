@@ -13,6 +13,17 @@ export default function threats(state = [], action){
                         y:[0,50]
                     }
                     break
+                case 'HEALTH':
+                    rect = {
+                        x:[action.xPos - 25, action.xPos + 25],
+                        y:[0,50]
+                    }
+                    break
+                case 'LASER':
+                    rect = {
+                        x:[action.xPos - 25, action.xPos + 25],
+                        y:[0,50]
+                    }
                 default:
                     rect = {
                         x:[-25,25],
@@ -27,6 +38,7 @@ export default function threats(state = [], action){
                     yPos: 0,
                     threatType: action.threatType,
                     rect,
+                    speed: Math.round(Math.random() * 20) + 5,
                     id
                 }
             ]
@@ -42,8 +54,8 @@ export default function threats(state = [], action){
             return state
         case 'FALL_THREATS':
             return state.slice().reduce((threats,threat) => {
-                threat.yPos += 20 //speed
-                threat.rect.y = threat.rect.y.map(bound => bound + 20)
+                threat.yPos += threat.speed
+                threat.rect.y = threat.rect.y.map(bound => bound + threat.speed)
                 threats.push(threat)
                 return threats
             },[])
@@ -55,6 +67,8 @@ export default function threats(state = [], action){
             })
             state.splice(index,1)
             return state
+        case 'CLEAR_THREATS':
+            return []
         default:
             return state
     }

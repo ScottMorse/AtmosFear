@@ -1,21 +1,37 @@
-export default function game(state = {started: false,ended: false,won: false}, action){
+export default function game(state = {
+    active: false,
+    started: false,
+    ended: false,
+    gameOver: false,
+    gameWin: false,
+    level: 1,
+}, action){
     switch(action.type){
         case 'START_GAME':
             return {
                 ...state,
+                active: true,
                 started: true
             }
-        case 'END_GAME':
+        case 'GAME_OVER':
             return {
                 ...state,
-                started: false,
-                ended: true
-            }
-        case 'WIN_GAME':
-            return {
-                started: false,
+                active: false,
+                gameOver: true,
                 ended: true,
-                won: true
+            }
+        case 'GAME_WIN':
+            return {
+                ...state,
+                active: false,
+                gameWin: true,
+                ended: true,
+            }
+        case 'LEVEL_WIN':
+            return {
+                ...state,
+                active: false,
+                level: state.level + 1
             }
         default:
             return state

@@ -9,14 +9,16 @@ const defaultState = {
         position: 0,
         rects: defaultShuttleRects,
         health: 100,
+        damageTotal: 0,
     },
     threats: [],
     game: {
-        started: false,
+        active: false,
         ended: false,
-        won: false,
+        gameOver: false,
+        gameWin: false,
+        level: 1,
     },
-    level: 1,
     sound: {
         selected: false
     }

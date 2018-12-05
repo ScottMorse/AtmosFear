@@ -1,21 +1,9 @@
 import React, { Component } from 'react'
 import styled, { keyframes } from 'styled-components'
 
-import { playHit } from '../utils/utils'
+import { playHealth } from '../utils/utils'
 
-const StyledAsteroid = styled.div`
-    position: absolute;
-    background-color: maroon;
-    width: 30px;
-    height: 30px;
-    border: 10px solid black;
-    border-radius: 50%;
-    z-index: 1;
-    opacity: 1;
-    transition: transform 0.1s linear;
-`
-
-export default class Asteroid extends Component {
+export default class HealthBall extends Component {
 
     state = {
         hasHit: false,
@@ -25,7 +13,7 @@ export default class Asteroid extends Component {
 
     componentDidMount(){
         
-        const element = document.getElementById('a' + this.props.threatId)
+        const element = document.getElementById('h' + this.props.threatId)
         this.setState({element: element})
 
         element.style.transform = `
@@ -55,9 +43,9 @@ export default class Asteroid extends Component {
                             (asteroidRect.y[1] - 20 <= shuttleRect.y[0] && asteroidRect.y[1] - 20 >= shuttleRect.y[1])
                         )
                     ){
-                        this.props.hitShuttle('ASTEROID')
+                        this.props.refillHealth(25)
                         if(this.props.sound.selected){
-                            playHit()
+                            playHealth()
                         }
                         this.setState({hasHit: true})
                         this.disintegrate()
@@ -77,6 +65,6 @@ export default class Asteroid extends Component {
     }
 
     render(){
-        return <div className="asteroid" id={"a" + this.props.threatId}></div>
+        return <div className="health" id={"h" + this.props.threatId}></div>
     }
 }

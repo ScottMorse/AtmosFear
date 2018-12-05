@@ -1,5 +1,5 @@
 export const defaultShuttleRects = [
-    {x: [-75,75],y: [700,606]},
+    {x: [-75,75],y: [650,606]},
     {x: [-65,65],y: [606,596]},
     {x: [-55,55],y: [596,526]},
     {x: [-45,45],y: [526,506]},
@@ -11,6 +11,8 @@ export const defaultShuttleRects = [
 
 const intro = new Audio(require('../assets/audio/intro.mp3'))
 const main = new Audio(require('../assets/audio/atmosfear.mp3'))
+
+main.volume = 0.5
 
 const audioFiles = {
     intro: intro,
@@ -28,6 +30,18 @@ export const stopAudio = (name) => {
 
 export const playHit = () => {
     const hit = new Audio(require('../assets/audio/hit.mp3'))
-    hit.volume = 0.3
+    hit.volume = 0.1
     hit.play()
+}
+
+export const playCharge = () => {
+    const charge = new Audio(require(Math.round(Math.random()) ? '../assets/audio/charge1.mp3' :  '../assets/audio/charge2.mp3' ))
+    charge.volume = 0.15
+    charge.play()
+}
+
+export const playHealth = () => {
+    const charge = new Audio(require('../assets/audio/health.mp3'))
+    charge.volume = 0.2
+    charge.play()
 }
