@@ -5,7 +5,7 @@ module.exports = {
   mode: 'production',
   devtool: 'source-map',
   entry: [
-    
+
     './client/app'
   ],
   output: {
