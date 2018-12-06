@@ -203,6 +203,7 @@ export default class Main extends Component {
 
     handleKeyDown = (e) => {
         e.preventDefault()
+        if(e.keyCode == 13 && this.state.paused && !this.props.game.gameOver) this.startGame()
         if(this.state.currentKey === e.keyCode || this.state.paused) return
         if(!Object.keys(keyCodes).includes("" + e.keyCode)) return
 

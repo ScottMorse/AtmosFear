@@ -14,7 +14,7 @@
         "url": "https://github.com/ScottMorse/AtmosFear"
     },
     "author": "Scott Morse",
-    "homepage": "",
+    "homepage": "atmos-fear.herokuapp.com",
     "dependencies": {
         "@babel/plugin-proposal-class-properties": "7.1.0",
         "@babel/preset-es2015": "7.0.0-beta.53",
@@ -58,10 +58,7 @@
         "@babel/preset-env": "7.1.6",
         "@babel/preset-react": "7.0.0",
         "babel-loader": "8.0.4",
-        "html-loader": "0.5.5",
-        "html-webpack-plugin": "3.2.0",
         "react": "16.6.3",
-        "react-dom": "16.6.3",
-        "webpack-dev-server": "3.1.10"
+        "react-dom": "16.6.3"
     }
 }

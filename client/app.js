@@ -23,7 +23,6 @@ function mapDispatchToProps(dispatch){
     return bindActionCreators(actionCreators, dispatch)
 }
 
-
 const GlobalStyle = createGlobalStyle`
     @import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
     html{

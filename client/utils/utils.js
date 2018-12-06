@@ -20,6 +20,7 @@ const audioFiles = {
 }
 
 export const playAudio = (name) => {
+    audioFiles[name].loop = true
     audioFiles[name].play()
 }
 
