@@ -1,7 +1,7 @@
 var path = require('path');
 var express = require('express');
 var webpack = require('webpack');
-var config = require('./webpack.config.prod');
+var config = require('./webpack.config.dev');
 
 var app = express();
 var compiler = webpack(config);
@@ -15,7 +15,7 @@ var compiler = webpack(config);
 
 app.use('/', express.static(path.join(__dirname, 'dist')))
 
-app.get('/', function(req, res) {
+app.get('*', function(req, res) {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
