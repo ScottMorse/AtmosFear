@@ -14,7 +14,7 @@ module.exports = {
     publicPath: '/static/'
   },
   module: {
-    loaders: [
+    rules: [
     // js
     {
       test: /\.js$/,
