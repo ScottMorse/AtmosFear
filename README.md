@@ -12,7 +12,7 @@ What was created during this project time:
 
 <a target="_blank" href="https://www.youtube.com/watch?v=3X9DpqyjG9g">
 ## Youtube Preview:
-[![AtmosFear link to YouTube](https://img.youtube.com/vi/3X9DpqyjG9g/0.jpg)]</a>
+![AtmosFear link to YouTube](https://img.youtube.com/vi/3X9DpqyjG9g/0.jpg)</a>
 
 # Overview
 
