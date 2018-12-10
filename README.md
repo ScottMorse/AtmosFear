@@ -10,8 +10,7 @@ What was created during this project time:
 * The game's entire functionality using the React and Redux JavaScript libraries
 * Original background music and sound effects produced with Logic Pro
 
-<a target="_blank" href="https://www.youtube.com/watch?v=3X9DpqyjG9g">
-## Youtube Preview</a>
+## <a target="_blank" href="https://www.youtube.com/watch?v=3X9DpqyjG9g"> Youtube Preview</a>
 
 [![AtmosFear link to YouTube](https://img.youtube.com/vi/3X9DpqyjG9g/0.jpg)](https://www.youtube.com/watch?v=3X9DpqyjG9g)
 
