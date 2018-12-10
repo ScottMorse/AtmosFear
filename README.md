@@ -5,7 +5,7 @@
 ## <a href="http://atmos-fear.herokuapp.com">Play Here!</a>
 
 This was a personal challenge to make a game using React and Redux in 3 days.  Project was started on December 3rd 2018, finalized on December 5th, and deployed for public play on December 6th.
-
+<a target="_blank" href="https://www.youtube.com/watch?v=3X9DpqyjG9g">
 ## Youtube Preview:
 [![AtmosFear link to YouTube](https://img.youtube.com/vi/3X9DpqyjG9g/0.jpg)]</a>
 
