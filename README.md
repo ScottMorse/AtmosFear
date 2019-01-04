@@ -1,7 +1,7 @@
 # AtmosFear
 ## A 3-Day React/Redux Game Challenge
 
-## <a href="http://atmos-fear.herokuapp.com">Play Here!</a>
+## <a href="https://atmos-fear.herokuapp.com">Play Here!</a>
 
 This was a personal challenge to make a game using React and Redux in 3 days.  Project was started on December 3rd 2018, finalized on December 5th, and deployed for public play on December 6th.
 
